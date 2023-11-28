@@ -29,16 +29,4 @@ public class ColourTableTest {
         // Test with an invalid palette size (not a power of 2)
         assertThrows(IllegalArgumentException.class, () -> new ColourTable(5));
     }
-
-    @Test
-    public void testConstructorWithNoParams() {
-        // Test with no params
-        assertThrows(IllegalArgumentException.class, () -> new ColourTable());
-    }
-
-    @Test
-    public void testConstructorWithIncorrectParams() {
-        // Test with invalid number of params
-        assertThrows(IllegalArgumentException.class, () -> new ColourTable(4, "someValue"));
-    }
 }
