@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ColourTableTest {
-
     /*
         Requirements:
             - Constructor takes single parameter that specifies number of colours in the palette
