@@ -29,4 +29,22 @@ public class ColourTableTest {
         // Test with an invalid palette size (not a power of 2)
         assertThrows(IllegalArgumentException.class, () -> new ColourTable(5));
     }
+
+    @Test
+    public void testAdd() {
+        // Testing a method add that enables a developer to add a 24-bit RGB
+        // colour to the colour table
+
+        ColourTable ct = new ColourTable(4);
+         // Black in hexadecimal = 0x000000 ->
+        // equivalent to 0b00000000_00000000_00000000 (24 bits)
+        assertThrows(IllegalArgumentException.class, () -> ct.add(0x000000));
+        // We should then test that the colour was added to the colour table
+        assertTrue(ct.isPresent(0x000000));
+        // We should be thrown an exception if we try to add a colour that is
+        assertThrows(IllegalArgumentException.class, () -> ct.add(0x000000));
+        // We should then test that the colour was added to the colour table
+        // This will require a method to get the colour table
+    }
+    
 }
