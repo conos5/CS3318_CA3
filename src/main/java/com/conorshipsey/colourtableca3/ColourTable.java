@@ -76,8 +76,4 @@ public class ColourTable {
             return colour;
         }
     }
-
-    // TODO: add tests for add method,
-    //      and implement the add method
-    //    consider how the colour palette object should be represented
 }
