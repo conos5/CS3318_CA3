@@ -1,7 +1,10 @@
 package com.conorshipsey.colourtableca3;
 
+import java.util.HashMap;
+
 public class ColourTable {
     private final int numPalettes;
+    private final HashMap<String, Colour> tableDictionary;
 
     public ColourTable(int numPalettes) {
         // if num palettes is a power of 2 & greater than 1 & less than 1025
@@ -11,8 +14,9 @@ public class ColourTable {
         else {
             throw new IllegalArgumentException("Invalid palette size");
         }
+        this.tableDictionary = new HashMap<>();
     }
-    public static boolean isPowerOfTwo(int num) {
+    private static boolean isPowerOfTwo(int num) {
         if (num <= 0) {
             return false;  // 0 and negative numbers are not powers of two
         }
@@ -20,4 +24,60 @@ public class ColourTable {
         double logBase2 = Math.log(num) / Math.log(2);
         return Math.floor(logBase2) == logBase2;
     }
+
+    public Colour add(String hexValue) {
+
+
+        // Ensuring that the colour table is not full
+        if (tableDictionary.size() >= numPalettes) {
+            throw new IllegalArgumentException("Colour table is full");
+        }
+        // ensuring validity of hexadecimal RGB colour added
+        if (!isValidHex(hexValue)) {
+            throw new IllegalArgumentException("Invalid hex value");
+        }
+        if (tableDictionary.containsKey(hexValue)) {
+            throw new IllegalArgumentException("Colour is already present in table");
+        }
+        int colour = Integer.parseInt(hexValue, 16);
+        tableDictionary.put(hexValue, new Colour(colour));
+
+        return new Colour(colour);
+    }
+
+    private boolean isValidHex(String hexValue) {
+        // Check if the string is a valid hexadecimal representation
+        /*
+        We expect the string to be a valid hexadecimal representation if:
+            - it contains only the characters 0-9 and a-f (case insensitive)
+            - it is exactly 6 characters long
+         */
+        return hexValue.matches("[0-9a-fA-F]+") && hexValue.length() == 6;
+    }
+
+    public boolean isPresent(String hexValue) {
+        // Check if the colour is present in the colour table
+        return tableDictionary.containsKey(hexValue);
+    }
+
+    public int getNumPalettes() {
+        return numPalettes;
+    }
+    // TODO: look into making the Colour class contain the
+    //       string representation of the colour aswell as the parsed int.
+    private class Colour {
+        private final int colour;
+
+        public Colour(int colour) {
+            this.colour = colour;
+        }
+
+        public int getColour() {
+            return colour;
+        }
+    }
+
+    // TODO: add tests for add method,
+    //      and implement the add method
+    //    consider how the colour palette object should be represented
 }
