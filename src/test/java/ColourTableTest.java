@@ -19,14 +19,17 @@ public class ColourTableTest {
     }
 
     @Test
-    public void testConstructorWithInvalidSize() {
-        // Test with an invalid palette size (less than 2)
+    public void testConstructorWithSizeLessThanTwo() {
         assertThrows(IllegalArgumentException.class, () -> new ColourTable(1));
+    }
 
-        // Test with an invalid palette size (greater than 1024)
+    @Test
+    public void testConstructorWithSizeGreaterThan1024() {
         assertThrows(IllegalArgumentException.class, () -> new ColourTable(2000));
+    }
 
-        // Test with an invalid palette size (not a power of 2)
+    @Test
+    public void testConstructorWithSizeNotPowerOfTwo() {
         assertThrows(IllegalArgumentException.class, () -> new ColourTable(5));
     }
 
