@@ -38,9 +38,9 @@ public class ColourTable {
             throw new IllegalArgumentException("Colour is already present in table");
         }
         int colour = Integer.parseInt(hexValue, 16);
-        tableDictionary.put(hexValue, new Colour(colour));
+        tableDictionary.put(hexValue, new Colour(colour, hexValue));
 
-        return new Colour(colour);
+        return new Colour(colour, hexValue);
     }
 
     public Colour remove(String hexValue) {
@@ -76,15 +76,21 @@ public class ColourTable {
     }
     // TODO: look into making the Colour class contain the
     //       string representation of the colour aswell as the parsed int.
-    private class Colour {
+    public class Colour {
         private final int colour;
+        private final String hexColour;
 
-        public Colour(int colour) {
+        public Colour(int colour, String hexColour) {
             this.colour = colour;
+            this.hexColour = "0x" + hexColour;
         }
 
         public int getColour() {
             return colour;
+        }
+
+        public String getHexColour() {
+            return hexColour;
         }
     }
 }
