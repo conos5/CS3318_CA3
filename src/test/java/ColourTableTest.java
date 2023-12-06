@@ -91,4 +91,24 @@ public class ColourTableTest {
         ColourTable ct = new ColourTable(4);
         assertThrows(IllegalArgumentException.class, () -> ct.remove("000000"));
     }
+
+    @Test
+    public void testGetColour() {
+        ColourTable ct = new ColourTable(4);
+        ColourTable.Colour colour = ct.add("000000");
+        // Asserting that the colour returned from getColour()
+        // is the same as the colour added. Where getColour() returns
+        // an integer representation of the colour.
+        assertEquals(0, colour.getColour());
+    }
+
+    @Test
+    public void testGetHexColour() {
+        ColourTable ct = new ColourTable(4);
+        ColourTable.Colour colour = ct.add("000000");
+        // Asserting that the colour returned from getColour()
+        // is the same as the colour added. Where getHexColour() returns
+        // a string representation of the colour.
+        assertEquals("0x000000", colour.getHexColour());
+    }
 }
