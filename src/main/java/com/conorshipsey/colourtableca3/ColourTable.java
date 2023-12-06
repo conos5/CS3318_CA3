@@ -16,6 +16,7 @@ public class ColourTable {
         }
         this.tableDictionary = new HashMap<>();
     }
+
     private static boolean isPowerOfTwo(int num) {
         if (num <= 0) {
             return false;  // 0 and negative numbers are not powers of two
@@ -74,8 +75,7 @@ public class ColourTable {
     public int getNumPalettes() {
         return numPalettes;
     }
-    // TODO: look into making the Colour class contain the
-    //       string representation of the colour aswell as the parsed int.
+
     public class Colour {
         private final int colour;
         private final String hexColour;

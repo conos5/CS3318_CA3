@@ -33,6 +33,12 @@ public class ColourTableTest {
     }
 
     @Test
+    public void testGetNumPalettes() {
+        ColourTable ct = new ColourTable(4);
+        assertEquals(4, ct.getNumPalettes());
+    }
+
+    @Test
     public void testAddValidColour() {
         // Testing a method add that enables a developer to add a 24-bit RGB
         // colour to the colour table
