@@ -15,7 +15,6 @@ public class ColourTableTest {
         // Test with a valid palette size
         ColourTable ct = new ColourTable(4);
         assertNotNull(ct);
-        // Add more assertions based on the expected behavior of the constructor
     }
 
     @Test
@@ -69,5 +68,20 @@ public class ColourTableTest {
         ct.add("000000");
         // to add to full colour table should throw an exception
         assertThrows(IllegalArgumentException.class, () -> ct.add("FFFFFF"));
+    }
+
+    @Test
+    public void testRemoveColour() {
+        ColourTable ct = new ColourTable(4);
+        ct.add("000000");
+        assertTrue(ct.isPresent("000000"));
+        ct.remove("000000");
+        assertFalse(ct.isPresent("000000"));
+    }
+
+    @Test
+    public void testRemoveColourNotInTable() {
+        ColourTable ct = new ColourTable(4);
+        assertThrows(IllegalArgumentException.class, () -> ct.remove("000000"));
     }
 }
