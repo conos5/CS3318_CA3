@@ -108,7 +108,7 @@ public class ColourTableTest {
         ColourTable.Colour colour = ct.add("000000");
         // Asserting that the colour returned from getColour()
         // is the same as the colour added. Where getHexColour() returns
-        // a string representation of the colour.
+        // a string representation of the colour with "0x" in front of it.
         assertEquals("0x000000", colour.getHexColour());
     }
 }
