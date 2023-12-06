@@ -82,6 +82,13 @@ public class ColourTableTest {
     @Test
     public void testRemoveColourNotInTable() {
         ColourTable ct = new ColourTable(4);
+        ct.add("0000FF");
+        assertThrows(IllegalArgumentException.class, () -> ct.remove("000000"));
+    }
+
+    @Test
+    public void testRemoveColourInEmptyTable() {
+        ColourTable ct = new ColourTable(4);
         assertThrows(IllegalArgumentException.class, () -> ct.remove("000000"));
     }
 }

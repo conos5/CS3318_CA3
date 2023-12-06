@@ -48,10 +48,6 @@ public class ColourTable {
         if (tableDictionary.size() == 0) {
             throw new IllegalArgumentException("Colour table is empty");
         }
-        // ensuring validity of hexadecimal RGB colour added
-        if (!isValidHex(hexValue)) {
-            throw new IllegalArgumentException("Invalid hex value");
-        }
         if (!tableDictionary.containsKey(hexValue)) {
             throw new IllegalArgumentException("Colour is not present in table");
         }
