@@ -26,8 +26,6 @@ public class ColourTable {
     }
 
     public Colour add(String hexValue) {
-
-
         // Ensuring that the colour table is not full
         if (tableDictionary.size() >= numPalettes) {
             throw new IllegalArgumentException("Colour table is full");
@@ -43,6 +41,23 @@ public class ColourTable {
         tableDictionary.put(hexValue, new Colour(colour));
 
         return new Colour(colour);
+    }
+
+    public Colour remove(String hexValue) {
+        // Ensuring that the colour table is not empty
+        if (tableDictionary.size() == 0) {
+            throw new IllegalArgumentException("Colour table is empty");
+        }
+        // ensuring validity of hexadecimal RGB colour added
+        if (!isValidHex(hexValue)) {
+            throw new IllegalArgumentException("Invalid hex value");
+        }
+        if (!tableDictionary.containsKey(hexValue)) {
+            throw new IllegalArgumentException("Colour is not present in table");
+        }
+        Colour removed_colour = tableDictionary.get(hexValue);
+        tableDictionary.remove(hexValue);
+        return removed_colour;
     }
 
     private boolean isValidHex(String hexValue) {
